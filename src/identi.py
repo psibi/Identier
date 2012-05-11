@@ -1,3 +1,25 @@
+#!/usr/bin/python
+#
+# Copyright (C) 2012 Sibi <sibi@psibi.in>
+#
+# This file is part of Identity.
+#
+# Identity is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Identity is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Identity.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Author:   Sibi <sibi@psibi.in>
+
 import requests
 import urllib
 from identica_mappings import base_url, api_table
@@ -26,7 +48,7 @@ class Identi:
             self.headers = { 'User-agent': 'Identi.ca Python Library' }
 
         self.client = None
-
+        #See https://github.com/ctoth/requests-oauth-hook
         if self.identi_token is not None and self.identi_secret is not None:
             self.client = requests.session(hooks={'pre_request': oauth_hook})
 
@@ -36,18 +58,19 @@ class Identi:
         
         if self.client is None:
             self.client = requests.session()
-
+        #Register functions. (**kwargs - For unpacking dictionaries)
         def setFunc(key):
             return lambda **kwargs: self._constructFunc(key, **kwargs)
         for key in api_table.keys():
             self.__dict__[key] = setFunc(key)
 
     def _constructFunc(self,api_call, **kwargs):
+        #Construct Funtions.
         fn = api_table[api_call]
         url = base_url + fn['url']
         method = fn['method'].lower()
         if not method in ('get', 'post'):
-            print "error"
+            raise IdentiError("Unknown Method")
         
         content = self._request(url,method = method, params=kwargs)
         return content
@@ -60,11 +83,12 @@ class Identi:
             url = '%s?%s' % (url,urllib.urlencode(params))
         else:
             myargs = params
-
+            
+        #Power of introspection :)
         func = getattr(self.client,method)
         response = func(url, data=myargs)
         content = response.content.decode('utf-8')
-        print content
+        #print content Useful for debugging
         return content
 
   def get_authentication_tokens(self):
@@ -72,6 +96,8 @@ class Identi:
             get_auth_url(self)
 
             Returns an authorization URL for a user to hit.
+            This is useful for django or other web based python frameworks.
+            Desktop App may not need them.
         """
         callback_url = self.callback_url
 
@@ -110,6 +136,8 @@ class Identi:
             get_authorized_tokens
 
             Returns authorized tokens after they go through the auth_url phase.
+            This is useful for django or other web based python frameworks.
+            Desktop App may not need them.
         """
         response = self.client.get(self.access_token_url)
         authorized_tokens = dict(parse_qsl(response.content))
