@@ -26,7 +26,7 @@ from identica_mappings import base_url, api_table
 from oauth_hook import OAuthHook
 from error import IdentiError
 
-class Identi:
+class Identica:
     def __init__(self,identi_token=None,identi_secret=None,oauth_token=None,oauth_secret=None,callback_url=None,header=None):
         # Needed for hitting that there API.
         self.request_token_url = 'https://identi.ca/api/oauth/request_token'
@@ -39,10 +39,10 @@ class Identi:
         self.oauth_token = oauth_token
         self.oauth_secret = oauth_secret
         self.callback_url = callback_url
-        
-        OAuthHook.consumer_key = self.identi_token
-        OAuthHook.consumer_secret = self.identi_secret
-        oauth_hook = OAuthHook(self.oauth_token,self.oauth_secret)
+        if self.identi_token is not None:
+            OAuthHook.consumer_key = self.identi_token
+            OAuthHook.consumer_secret = self.identi_secret
+            oauth_hook = OAuthHook(self.oauth_token,self.oauth_secret)
         self.headers = header
         if self.headers is None:
             self.headers = { 'User-agent': 'Identi.ca Python Library' }
@@ -91,13 +91,13 @@ class Identi:
         #print content Useful for debugging
         return content
 
-  def get_authentication_tokens(self):
+    def get_authentication_tokens(self):
         """
-            get_auth_url(self)
-
-            Returns an authorization URL for a user to hit.
-            This is useful for django or other web based python frameworks.
-            Desktop App may not need them.
+        get_auth_url(self)
+        
+        Returns an authorization URL for a user to hit.
+        This is useful for django or other web based python frameworks.
+        Desktop App may not need them.
         """
         callback_url = self.callback_url
 
@@ -148,9 +148,10 @@ class Identi:
 
 
 if __name__=="__main__":
-    #idc = Identi()
+    idc = Identica()
     #user_timeline = idc.updateStatus(status="Test Message #test")
     #group_timeline = idc.getGroupLists(id='psibi')
+    #pt_json = idc.getPublicTimeline()
     pass
 
 
