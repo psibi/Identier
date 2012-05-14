@@ -22,6 +22,8 @@
 
 import requests
 import urllib
+from xml.dom import minidom
+from django.utils.encoding import smart_str #Need this to avoid Unicode errors. Fixme: Use other library for unicode handling rather than django's.
 from identica_mappings import base_url, api_table
 from oauth_hook import OAuthHook
 from error import IdentiError
@@ -87,9 +89,10 @@ class Identica:
         #Power of introspection :)
         func = getattr(self.client,method)
         response = func(url, data=myargs)
-        content = response.content.decode('utf-8')
+        #content = response.content.decode('utf-8')
         #print content Useful for debugging
-        return content
+        #return content
+        return response.content
 
     def get_authentication_tokens(self):
         """
@@ -147,6 +150,31 @@ class Identica:
         return authorized_tokens
 
 
+    def getValues(self,xmlString,tag_text):
+        """
+           getValues
+
+           xmlString : A string representing xml content.
+           tag_text: A string representing a tag name. Eg: <text> will
+           be represented as "text".
+           Returns the value enclosed by the tag_text in the xmlString.
+        """
+        doc = minidom.parseString(smart_str(xmlString))
+        node = doc.documentElement
+        status = doc.getElementsByTagName("status")
+        titles = []
+        value = []
+        for stat in status:
+            titleObj = stat.getElementsByTagName(tag_text)[0]
+            titles.append(titleObj)
+
+            for title in titles:
+                nodes = title.childNodes
+                for node in nodes:
+                    if node.nodeType == node.TEXT_NODE:
+                        value.append(node.data)
+        return value
+        
 if __name__=="__main__":
     idc = Identica()
     #user_timeline = idc.updateStatus(status="Test Message #test")
