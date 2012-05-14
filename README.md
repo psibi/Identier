@@ -38,6 +38,7 @@ To Do:
 -------
 1. Write more examples for using this API inside the examples directory.
 2. Remove Django dependency by providing alternate solution for solving Unicode related problem.
+3. Do Documentation.
  
 License:
 --------
