@@ -16,7 +16,7 @@ setup(
     include_package_data=True,
 
     # Package dependencies.
-    install_requires=['oauth2', 'requests', 'requests-oauth'],
+    install_requires=['oauth2', 'requests', 'requests-oauth','python-django'],
 
     # Metadata for PyPI.
     author='Sibi',
@@ -25,11 +25,11 @@ setup(
     url='https://github.com/psibi/Identier',
     keywords='identi.ca API library',
     description='An easy to use API library specifically for identi.ca',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     classifiers=[
-        'Development Status :: 1-Beta',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU GPLv3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Communications :: Chat',
         'Topic :: Internet'
