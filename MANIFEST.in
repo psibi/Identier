@@ -1,1 +1,2 @@
 include LICENSE README.md README.txt COPYING
+recursive-include examples *
