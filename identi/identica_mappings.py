@@ -25,188 +25,188 @@ base_url = 'http://identi.ca/api/'
 
 api_table = {
     'getPublicTimeline': {
-        'url': 'statuses/public_timeline.json',
+        'url': 'statuses/public_timeline.xml',
         'method': 'GET',
         },
     
     'getHomeTimeline': {
-        'url': 'statuses/home_timeline.json',
+        'url': 'statuses/home_timeline.xml',
         'method': 'GET',
         },
 
     'getFriendsTimeline': {
-        'url': 'statuses/friends_timeline.json',
+        'url': 'statuses/friends_timeline.xml',
         'method': 'GET',
         },
 
     'getMentions': {
-        'url': 'statuses/mentions.json',
+        'url': 'statuses/mentions.xml',
         'method': 'GET',
         },
 
     'getReplies': {
-        'url': 'statuses/replies.json',
+        'url': 'statuses/replies.xml',
         'method': 'GET',
         },
 
     'getUserTimeline': {
-        'url': 'statuses/user_timeline.json',
+        'url': 'statuses/user_timeline.xml',
         'method': 'GET',
         },
 
     'getRetweetsOfMe': {
-        'url': 'statuses/retweets_of_me.json',
+        'url': 'statuses/retweets_of_me.xml',
         'method': 'GET',
         },
 
     # Status resources 
     'showStatus': {
-        'url': 'statuses/show/{{id}}.json',
+        'url': 'statuses/show/{{id}}.xml',
         'method': 'GET',
         },
 
     'updateStatus': {
-        'url': 'statuses/update.json',
+        'url': 'statuses/update.xml',
         'method': 'POST',
         },
 
     'destroyStatus': {
-        'url': 'statuses/destroy/{{id}}.json',
+        'url': 'statuses/destroy/{{id}}.xml',
         'method': 'POST'
         },
 
     'retweetStatus': {
-        'url': 'statuses/retweet/{{id}}.json',
+        'url': 'statuses/retweet/{{id}}.xml',
         'method': 'POST'
         },
 
     'getFriendsStatus': {
-        'url': 'statuses/friends.json',
+        'url': 'statuses/friends.xml',
         'method': 'GET'
         },
 
     'getFollowersStatus': {
-        'url': 'statuses/followers.json',
+        'url': 'statuses/followers.xml',
         'method': 'GET'
         },
 
     'getDirectMessages' : {
-        'url': 'statuses/direct_messages.json',
+        'url': 'statuses/direct_messages.xml',
         'method': 'GET'
         },
 
     'getSentMessages': {
-        'url': '/direct_messages/sent.json',
+        'url': '/direct_messages/sent.xml',
         'method': 'GET',
         },
 
     'sendDirectMessage': {
-        'url': '/direct_messages/new.json',
+        'url': '/direct_messages/new.xml',
         'method': 'POST',
         },
 
     'createFriendship': {
-        'url': '/friendships/create.json',
+        'url': '/friendships/create.xml',
         'method': 'POST',
         },
 
     'destroyFriendship': {
-        'url': '/friendships/destroy.json',
+        'url': '/friendships/destroy.xml',
         'method': 'POST',
         },
 
     'checkIfFriendshipExists': {
-        'url': '/friendships/exists.json',
+        'url': '/friendships/exists.xml',
         'method': 'GET',
         },
 
     'showFriendship': {
-        'url': '/friendships/show.json',
+        'url': '/friendships/show.xml',
         'method': 'GET',
         },
 
     'getFriendsIDs': {
-        'url': '/friends/ids.json',
+        'url': '/friends/ids.xml',
         'method': 'GET',
         },
 
     'getFollowersIDs': {
-        'url': '/followers/ids.json',
+        'url': '/followers/ids.xml',
         'method': 'GET',
         },
 
     'verifyCredentials': {
-        'url': '/account/verify_credentials.json',
+        'url': '/account/verify_credentials.xml',
         'method': 'GET',
         },
 
     'getFavorites': {
-        'url': '/favorites.json',
+        'url': '/favorites.xml',
         'method': 'GET',
         },
     
     'createFavorite': {
-        'url': '/favorites/create/{{id}}.json',
+        'url': '/favorites/create/{{id}}.xml',
         'method': 'POST',
         },
 
     'destroyFavorite': {
-        'url': '/favorites/destroy/{{id}}.json',
+        'url': '/favorites/destroy/{{id}}.xml',
         'method': 'POST',
         },
 
     'createBlock': {
-        'url': '/blocks/create/{{id}}.json',
+        'url': '/blocks/create/{{id}}.xml',
         'method': 'POST',
         },
 
     'destroyBlock': {
-        'url': '/blocks/destroy/{{id}}.json',
+        'url': '/blocks/destroy/{{id}}.xml',
         'method': 'POST',
         },
 
     'showGroupTimeline': {
-        'url': 'statusnet/groups/timeline.json',
+        'url': 'statusnet/groups/timeline.xml',
         'method': 'GET',
         },
 
     'getGroupLists': {
-        'url': 'statusnet/groups/list.json',
+        'url': 'statusnet/groups/list.xml',
         'method': 'GET',
         },
 
     'createGroup': {
-        'url': 'statusnet/groups/create.json',
+        'url': 'statusnet/groups/create.xml',
         'method': 'POST',
         },
 
     'joinGroup': {
-        'url': 'statusnet/groups/join.json',
+        'url': 'statusnet/groups/join.xml',
         'method': 'POST',
         },
 
     'leaveGroup': {
-        'url': 'statusnet/groups/leave.json',
+        'url': 'statusnet/groups/leave.xml',
         'method': 'POST',
         },
 
     'getAllList': {
-        'url': 'statusnet/groups/list_all.json',
+        'url': 'statusnet/groups/list_all.xml',
         'method': 'GET',
         },
 
     'getMembers': {
-        'url': 'statusnet/groups/membership.json',
+        'url': 'statusnet/groups/membership.xml',
         'method': 'GET',
         },
 
     'isMember': {
-        'url': 'statusnet/group/is_member.json',
+        'url': 'statusnet/group/is_member.xml',
         'method': 'GET',
         },
 
     'getTagTimeline': {
-        'url': 'statusnet/tags/timeline.json',
+        'url': 'statusnet/tags/timeline.xml',
         'method': 'GET',
         }
 }
