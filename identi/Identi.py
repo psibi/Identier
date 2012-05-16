@@ -22,6 +22,7 @@
 
 import requests
 import urllib
+import re
 from xml.dom import minidom
 from django.utils.encoding import smart_str #Need this to avoid Unicode errors. Fixme: Use other library for unicode handling rather than django's.
 from identica_mappings import base_url, api_table
@@ -69,7 +70,13 @@ class Identica:
     def _constructFunc(self,api_call, **kwargs):
         #Construct Funtions.
         fn = api_table[api_call]
-        url = base_url + fn['url']
+        #Generates the API URL
+        url = re.sub(
+            '\{\{(?P<m>[a-zA-Z_]+)\}\}', #for replacing within {id}    
+            lambda m: "%s" % kwargs.get(m.group(1)),
+            base_url + fn['url']
+        )
+        #print url #Good for debugging.
         method = fn['method'].lower()
         if not method in ('get', 'post'):
             raise IdentiError("Unknown Method")
