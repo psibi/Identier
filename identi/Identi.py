@@ -168,15 +168,15 @@ class Identica:
             titleObj = stat.getElementsByTagName(tag_text)[0]
             titles.append(titleObj)
 
-            for title in titles:
-                nodes = title.childNodes
-                for node in nodes:
-                    if node.nodeType == node.TEXT_NODE:
-                        value.append(node.data)
+        for title in titles:
+            nodes = title.childNodes
+            for node in nodes:
+                if node.nodeType == node.TEXT_NODE:
+                    value.append(node.data)
         return value
         
 if __name__=="__main__":
-    idc = Identica()
+    #idc = Identica()
     #user_timeline = idc.updateStatus(status="Test Message #test")
     #group_timeline = idc.getGroupLists(id='psibi')
     #pt_json = idc.getPublicTimeline()
