@@ -4,7 +4,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 __author__ = 'Sibi <sibi@psibi.in>'
-__version__ = '0.1.1'  #major.minor.micro
+__version__ = '0.1.2'  #major.minor.micro
 
 setup(
     # Basic package information.
@@ -16,7 +16,7 @@ setup(
     include_package_data=True,
 
     # Package dependencies.
-    install_requires=['oauth2', 'requests', 'requests-oauth','python-django'],
+    install_requires=['oauth2', 'requests', 'requests-oauth','django'],
 
     # Metadata for PyPI.
     author='Sibi',
