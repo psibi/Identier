@@ -208,6 +208,11 @@ api_table = {
     'getTagTimeline': {
         'url': 'statusnet/tags/timeline.xml',
         'method': 'GET',
+        },
+
+    'search': {
+        'url': 'search.json',
+        'method': 'GET',
         }
 }
 
