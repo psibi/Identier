@@ -6,5 +6,5 @@ identica = Identica()
 
 # OAuth Handshaking
 
-identica.updateStatus("Test message #test")
+identica.updateStatus(status="Test message #test")
 
